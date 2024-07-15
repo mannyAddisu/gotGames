@@ -1,13 +1,13 @@
 import useGenres from "../hooks/useGenres";
-const Genre = () => {
-  const { genre } = useGenres();
+const GameGenre = () => {
+  const { data } = useGenres();
   return (
     <ul>
-      {genre.map((genre) => (
+      {data.map((genre) => (
         <li key={genre.id}>{genre.name}</li>
       ))}
     </ul>
   );
 };
 
-export default Genre;
+export default GameGenre;
