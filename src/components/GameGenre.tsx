@@ -1,12 +1,45 @@
+import {
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Skeleton,
+  SkeletonText,
+  Text,
+} from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
+import getCroppedImages from "../services/image-url";
 const GameGenre = () => {
-  const { data } = useGenres();
+  const { data, isLoading } = useGenres();
+  const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  if (isLoading)
+    return (
+      <List>
+        {skeleton.map((sk) => (
+          <ListItem key={sk} paddingY="5px">
+            <HStack>
+              <Skeleton boxSize={"32px"} borderRadius={8} />
+              <SkeletonText width={"100px"} noOfLines={1} />
+            </HStack>
+          </ListItem>
+        ))}
+      </List>
+    );
   return (
-    <ul>
+    <List>
       {data.map((genre) => (
-        <li key={genre.id}>{genre.name}</li>
+        <ListItem key={genre.id} paddingY="5px">
+          <HStack>
+            <Image
+              src={getCroppedImages(genre.image_background)}
+              boxSize="32px"
+              borderRadius={8}
+            />
+            <Text fontSize="lg">{genre.name}</Text>
+          </HStack>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 };
 

@@ -3,7 +3,7 @@ import logo from "../assets/Asset.png";
 import ThemeSwitch from "./ThemeSwitch";
 const Navbar = () => {
   return (
-    <HStack justifyContent={"space-between"} padding={"10px"}>
+    <HStack justifyContent={"space-between"} padding={5}>
       <Image src={logo} boxSize="60px" />
       <ThemeSwitch />
     </HStack>
