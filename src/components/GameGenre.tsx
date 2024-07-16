@@ -12,8 +12,9 @@ import getCroppedImages from "../services/image-url";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
-const GameGenre = ({ onSelectGenre }: Props) => {
+const GameGenre = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data, isLoading } = useGenres();
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
@@ -41,7 +42,7 @@ const GameGenre = ({ onSelectGenre }: Props) => {
               borderRadius={8}
             />
             <Button
-              fontSize="lg"
+              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
               variant="link"
               onClick={() => onSelectGenre(genre)}
             >
