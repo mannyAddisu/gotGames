@@ -6,7 +6,7 @@ const ThemeSwitch = () => {
   return (
     <HStack>
       <Switch isChecked={colorMode === "dark"} onChange={toggleColorMode} />
-      <Text>Dark Mode</Text>
+      <Text fontSize={{ md: "lg" }}>Theme</Text>
     </HStack>
   );
 };
