@@ -1,13 +1,12 @@
-import { Heading, HStack, Image } from "@chakra-ui/react";
+import { Text, HStack, Image, Flex } from "@chakra-ui/react";
 import logo from "../assets/Asset.png";
 import ThemeSwitch from "./ThemeSwitch";
+import SearchBar from "./SearchBar";
 const Navbar = () => {
   return (
     <HStack justifyContent={"space-between"} padding={5}>
-      <HStack>
-        <Image src={logo} boxSize="60px" />
-        <Heading fontSize={{ md: "18px", lg: "24px" }}>gotGames</Heading>
-      </HStack>
+      <Image src={logo} boxSize="60px" />
+      <SearchBar />
       <ThemeSwitch />
     </HStack>
   );
