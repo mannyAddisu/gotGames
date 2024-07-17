@@ -9,7 +9,7 @@ import {
   FaLinux,
 } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
-import { SiNintendo } from "react-icons/si";
+import { SiNintendo, SiSega } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { IconType } from "react-icons";
 interface Props {
@@ -26,6 +26,7 @@ const PlatformIconList = ({ platform }: Props) => {
     ios: MdPhoneIphone,
     nintendo: SiNintendo,
     web: BsGlobe,
+    sega: SiSega,
   };
   return (
     <HStack marginY={1}>
