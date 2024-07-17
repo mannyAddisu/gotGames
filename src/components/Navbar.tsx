@@ -1,12 +1,16 @@
-import { Text, HStack, Image, Flex } from "@chakra-ui/react";
+import { HStack, Image } from "@chakra-ui/react";
 import logo from "../assets/Asset.png";
 import ThemeSwitch from "./ThemeSwitch";
 import SearchBar from "./SearchBar";
-const Navbar = () => {
+
+interface Props {
+  onSearch: (searchQuery: string) => void;
+}
+const Navbar = ({ onSearch }: Props) => {
   return (
     <HStack justifyContent={"space-between"} padding={5}>
       <Image src={logo} boxSize="60px" />
-      <SearchBar />
+      <SearchBar onSearch={onSearch} />
       <ThemeSwitch />
     </HStack>
   );
