@@ -10,13 +10,13 @@ import {
 } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCroppedImages from "../services/image-url";
-import { Genre } from "../services/genreService";
+// import { Genre } from "../services/genreService";
 
 interface Props {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  onSelectGenre: (genreId: number) => void;
+  selectedGenreId?: number;
 }
-const GameGenre = ({ selectedGenre, onSelectGenre }: Props) => {
+const GameGenre = ({ selectedGenreId, onSelectGenre }: Props) => {
   const { data, isLoading } = useGenres();
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
@@ -49,11 +49,11 @@ const GameGenre = ({ selectedGenre, onSelectGenre }: Props) => {
                 objectFit="cover"
               />
               <Button
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                 variant="link"
                 textAlign="left"
                 whiteSpace="normal"
-                onClick={() => onSelectGenre(genre)}
+                onClick={() => onSelectGenre(genre.id)}
               >
                 {genre.name}
               </Button>

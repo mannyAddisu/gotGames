@@ -6,12 +6,10 @@ import { useState } from "react";
 import PlatformMenu from "./components/PlatformMenu";
 import SortMenu from "./components/SortMenu";
 import GameHeading from "./components/GameHeading";
-import { Platform } from "./services/platformService";
-import { Genre } from "./services/genreService";
 
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
+  genreId?: number;
+  platformId?: number;
   sortOrder: string;
   searchQuery: string;
 }
@@ -36,8 +34,10 @@ function App() {
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           <GameGenre
-            selectedGenre={gameQuery.genre}
-            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            selectedGenreId={gameQuery.genreId}
+            onSelectGenre={(genre) =>
+              setGameQuery({ ...gameQuery, genreId: genre })
+            }
           />
         </GridItem>
       </Show>
@@ -46,9 +46,9 @@ function App() {
           <GameHeading gameQuery={gameQuery} />
           <HStack spacing={5} marginBottom={5}>
             <PlatformMenu
-              selectedPlatform={gameQuery.platform}
+              selectedPlatformId={gameQuery.platformId}
               onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
+                setGameQuery({ ...gameQuery, platformId: platform })
               }
             />
             <SortMenu
