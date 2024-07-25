@@ -18,12 +18,12 @@ const GameGrid = ({ gameQuery }: Props) => {
     data?.pages.reduce((acc, page) => acc + page.results.length, 0) || 0;
   return (
     <>
-      {error && <Text>{error.message}</Text>}
+      {error && <Text paddingStart="50%">{error.message}</Text>}
       <InfiniteScroll
         dataLength={fetchedGames}
         next={fetchNextPage}
         hasMore={!!hasNextPage}
-        loader={<Spinner />}
+        loader={<Spinner marginStart="50%" />}
       >
         <SimpleGrid
           columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
