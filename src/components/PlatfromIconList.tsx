@@ -11,7 +11,7 @@ import { MdPhoneIphone } from "react-icons/md";
 import { SiAtari, SiCommodore, SiNintendo, SiSega } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { IconType } from "react-icons";
-import { Platform } from "../hooks/usePlatform";
+import { Platform } from "../services/platformService";
 interface Props {
   platform: Platform[];
 }
