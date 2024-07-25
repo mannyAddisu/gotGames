@@ -1,8 +1,8 @@
-import axios from "axios";
-import { GameQuery } from "../App";
+import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
   count: number;
+  next: string | null;
   results: T[];
 }
 
@@ -24,16 +24,9 @@ class APIClient<T> {
       .get<FetchResponse<T>>(this.endpoint)
       .then((res) => res.data);
   };
-  getGames = (gameQuery: GameQuery) => {
+  getGames = (config: AxiosRequestConfig) => {
     return axiosInstance
-      .get<FetchResponse<T>>(this.endpoint, {
-        params: {
-          genres: gameQuery.genre?.id,
-          parent_platforms: gameQuery.platform?.id,
-          ordering: gameQuery.sortOrder,
-          search: gameQuery.searchQuery,
-        },
-      })
+      .get<FetchResponse<T>>(this.endpoint, config)
       .then((res) => res.data);
   };
 }
