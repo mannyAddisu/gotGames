@@ -13,12 +13,20 @@ const SortMenu = () => {
     { value: "-metacritic", label: "Popularity" },
     { value: "-rating", label: "Average rating" },
   ];
+  const order = sortOrders.find((order) => order.value === sortOrder)?.label;
+
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<BsChevronDown />}>
+      <MenuButton
+        as={Button}
+        fontSize={{ base: "14px", md: "md" }}
+        padding={{ base: 2, md: 4 }}
+        rightIcon={<BsChevronDown />}
+      >
         Order by:{" "}
-        {sortOrders.find((order) => order.value === sortOrder)?.label ||
-          "Relevance"}
+        {window.innerWidth < 500 && order && order?.length > 10
+          ? order.slice(0, 6) + "..."
+          : order || "Relevance"}
       </MenuButton>
       <MenuList>
         {sortOrders.map((order) => (

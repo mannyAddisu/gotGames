@@ -20,9 +20,9 @@ const HomePage = () => {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <Box paddingX={2.5}>
+        <Box>
           <GameHeading />
-          <HStack spacing={5} marginBottom={5}>
+          <HStack marginBottom={5} spacing={{ base: 1, sm: 5 }}>
             <PlatformMenu />
             <SortMenu />
           </HStack>
