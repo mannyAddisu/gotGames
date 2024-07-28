@@ -3,11 +3,12 @@ import PlatformIconList from "./PlatfromIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImages from "../services/image-url";
 import { Game } from "../services/gameService";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 interface Props {
   game: Game;
 }
 const GameCard = ({ game }: Props) => {
+  const navigate = useNavigate();
   return (
     <Card
       borderRadius={10}
@@ -16,6 +17,9 @@ const GameCard = ({ game }: Props) => {
       _hover={{
         transform: "scale(1.03)",
         transition: "transform .2s ease-in",
+      }}
+      onClick={() => {
+        navigate(`/games/${game.slug}`);
       }}
     >
       <Image src={getCroppedImages(game.background_image)} />
@@ -28,9 +32,7 @@ const GameCard = ({ game }: Props) => {
           />
           <CriticScore score={Number(game.metacritic)} />
         </HStack>
-        <Heading fontSize="xl">
-          <Link to={"/games/" + game.slug}>{game.name}</Link>
-        </Heading>
+        <Heading fontSize="xl">{game.name}</Heading>
       </CardBody>
     </Card>
   );
